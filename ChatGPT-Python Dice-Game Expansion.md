@@ -23,13 +23,13 @@ Players begin their turn by rolling six dice. After each roll, the player must s
 
 Points are scored as follows:
 
-A 1 is worth 100 points
-A 5 is worth 50 points
-Three of a kind is worth 100 times the face value of the dice (e.g. three 4s would be worth 400 points)
-Four of a kind is worth double the value of three of a kind (e.g. four 4s would be worth 800 points)
-Five of a kind is worth double the value of four of a kind (e.g. five 4s would be worth 1600 points)
-Six of a kind is worth double the value of five of a kind (e.g. six 4s would be worth 3200 points)
-If a player sets aside all six dice, they can choose to re-roll all six dice and continue their turn.
+- A 1 is worth 100 points
+- A 5 is worth 50 points
+- Three of a kind is worth 100 times the face value of the dice (e.g. three 4s would be worth 400 points)
+- Four of a kind is worth double the value of three of a kind (e.g. four 4s would be - worth 800 points)
+- Five of a kind is worth double the value of four of a kind (e.g. five 4s would be worth 1600 points)
+- Six of a kind is worth double the value of five of a kind (e.g. six 4s would be worth 3200 points)
+- If a player sets aside all six dice, they can choose to re-roll all six dice and continue their turn.
 
 The first player to score 10,000 or more points at the end of a complete turn wins the game. If two or more players reach 10,000 or more points at the end of the same turn, the player with the highest score wins. If a player rolls all six dice and scores no points, they lose all points accumulated during their turn and play passes to the next player.
 
@@ -96,12 +96,13 @@ Sure, I'd be happy to help with that. What specific question do you have about d
 
 """
 
-Handle rolling dice
-Add roll_dice static method to GameLogic class.
-The input to roll_dice is an integer between 1 and 6.
-The output of roll_dice is a tuple with random values between 1 and 6.
-The length of tuple must match the argument given to roll_dice method.
-""" import pytest import os import sys sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(file), '..'))) from ten_thousand.game_logic import GameLogic
+- Handle rolling dice
+- Add roll_dice static method to GameLogic class.
+- The input to roll_dice is an integer between 1 and 6.
+- The output of roll_dice is a tuple with random values between 1 and 6.
+- The length of tuple must match the argument given to roll_dice method.
+""" 
+import pytest import os import sys sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(file), '..'))) from ten_thousand.game_logic import GameLogic
 
 pytestmark = [pytest.mark.version_1]
 
@@ -109,31 +110,31 @@ def test_1_dice(): values = GameLogic.roll_dice(1) assert len(values) == 1 value
 
 def test_2_dice(): values = GameLogic.roll_dice(2) assert len(values) == 2
 
-for value in values:
-    assert 1 <= value <= 6
+    for value in values:
+        assert 1 <= value <= 6
 def test_3_dice(): values = GameLogic.roll_dice(3) assert len(values) == 3
 
-for value in values:
-    assert 1 <= value <= 6
+    for value in values:
+        assert 1 <= value <= 6
 def test_4_dice(): values = GameLogic.roll_dice(4) assert len(values) == 4
 
-for value in values:
-    assert 1 <= value <= 6
+    for value in values:
+        assert 1 <= value <= 6
 def test_5_dice(): values = GameLogic.roll_dice(5) assert len(values) == 5
 
-for value in values:
-    assert 1 <= value <= 6
+    for value in values:
+        assert 1 <= value <= 6
 def test_6_dice(): values = GameLogic.roll_dice(6) assert len(values) == 6
 
-for value in values:
-    assert 1 <= value <= 6
+    for value in values:
+        assert 1 <= value <= 6
 @pytest.mark.parametrize("num_dice,expected_length", [ (1,1), (2,2), (3,3), (4,4), (5,5), (6,6), ], ) def test_all_dice_rolls(num_dice,expected_length): values = GameLogic.roll_dice(num_dice) assert len(values) == expected_length
 
-for value in values:
-    assert 1 <= value <= 6
+    for value in values:
+        assert 1 <= value <= 6
 keep them and wait
 
-ChatGPT:
+## ChatGPT:
 This is a test suite for the game of ten thousand or Farkle game, a dice game. The game has different scoring rules, and this test suite is meant to test the different rules.
 
 The test_single_five() function tests whether rolling a single 5 gives the correct score.
@@ -168,7 +169,7 @@ The test_six_ones() function tests whether rolling six ones gives the correct sc
 
 The test_parameterized() function tests a range of input dice combinations and their expected score to ensure the game logic works correctly for a variety of cases.
 
-You:
+## You:
 Define a GameLogic class in ten_thousand/game_logic.py file. Handle calculating score for dice roll Add calculate_score static method to GameLogic class. The input to calculate_score is a tuple of integers that represent a dice roll. The output from calculate_score is an integer representing the roll’s score according to rules of game. Handle rolling dice Add roll_dice static method to GameLogic class. The input to roll_dice is an integer between 1 and 6. The output of roll_dice is a tuple with random values between 1 and 6. The length of tuple must match the argument given to roll_dice method.
 
 ### ChatGPT:
@@ -202,13 +203,13 @@ Here is an implementation of the GameLogic class that meets the requirements spe
             return tuple(random.randint(1, 6) for _ in range(num_dice))
     Explanation of calculate_score method:
 
-First, we check if all the values in the dice roll are unique. If so, it is a straight and the score is 1500.
-Otherwise, we iterate through each possible number (1-6) and count how many times it appears in the dice roll.
-If a number appears 3 or more times, we score it accordingly (1000 for 3 ones, 200 for 3 twos, etc.) and subtract 3 from the count.
-If the number is a 1, we add 100 points for each remaining 1.
-If the number is a 5, we add 50 points for each remaining 5.
-Finally, we return the total score.
-Explanation of roll_dice method:
+- First, we check if all the values in the dice roll are unique. If so, it is a straight and the score is 1500.
+- Otherwise, we iterate through each possible number (1-6) and count how many times it appears in the dice roll.
+- If a number appears 3 or more times, we score it accordingly (1000 for 3 ones, 200 for 3 twos, etc.) and subtract 3 from the count.
+- If the number is a 1, we add 100 points for each remaining 1.
+- If the number is a 5, we add 50 points for each remaining 5.
+- Finally, we return the total score.
+- Explanation of roll_dice method:
 
 We use a list comprehension to generate num_dice random integers between 1 and 6 using random.randint().
 We convert the list to a tuple and return it.
