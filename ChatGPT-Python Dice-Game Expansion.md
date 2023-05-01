@@ -213,3 +213,12 @@ Here is an implementation of the GameLogic class that meets the requirements spe
 
 We use a list comprehension to generate num_dice random integers between 1 and 6 using random.randint().
 We convert the list to a tuple and return it.
+
+
+
+# Lab 07
+
+used it just to generate docstring for methods and fix some bugs prompts:
+
+- Generate docstring
+- Explain tests
